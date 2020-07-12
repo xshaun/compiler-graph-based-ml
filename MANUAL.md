@@ -35,3 +35,16 @@ bazel test //programl/...
 ```bash
 sed -i s/clang-llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04/clang-llvm-10.0.0-aarch64-linux-gnu/g `grep -rl "clang-llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04" ./`
 ```
+
+### download dataset
+
+```bash
+wget -c https://www.dropbox.com/s/cw25t4cls6otel5/llvm_ir_20.06.01.tar.bz2 | tar jxvf
+wget -c https://www.dropbox.com/s/f7j2qbo6hobckqy/graphs_20.06.01.tar.bz2 | tar jxvf
+wget -c https://www.dropbox.com/s/ha0lp343an336fp/labels_reachability_20.06.01.tar.bz2 | tar jxvf
+wget -c https://www.dropbox.com/s/cl4kuak4kds9yuc/labels_domtree_20.06.01.tar.bz2 | tar jxvf
+wget -c https://www.dropbox.com/s/yxqzmp4vvzycxje/labels_datadep_20.06.01.tar.bz2 | tar jxvf
+wget -c https://www.dropbox.com/s/qvhekvovx6n1ino/labels_liveness_20.06.01.tar.bz2 | tar jxvf
+wget -c https://www.dropbox.com/s/a8tkugnu6mq64kq/labels_subexpressions_20.06.01.tar.bz2 | tar jxvf
+wget -c https://www.dropbox.com/s/o3qopbyhf2p5pf2/dataflow_logs_20.06.01.tar.bz2 | tar jxvf
+```
