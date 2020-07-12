@@ -25,7 +25,7 @@ def programl_deps():
     
     # todo?
     # exp at centos
-    sha256="4729e45eee70c1ce78d6c37ba7e5d8aa65ee995cfa8cc1fc372842389398d87e",
+    sha256="ce8220c8be3057bf21cb6c142f0c64c4206dd038dce1a661268bc668d460539d",
     strip_prefix="compiler-bazel-llvm-0-alpha", 
     urls=[ 
       "https://github.com/xshaun/compiler-bazel-llvm/archive/v0-alpha.tar.gz"
