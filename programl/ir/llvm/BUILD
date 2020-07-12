@@ -25,7 +25,7 @@ cc_library(
             "@clang-llvm-10.0.0-x86_64-apple-darwin//:clang++",
         ],
         "//conditions:default": [
-            "@clang-llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04//:clang++",
+            "@clang-llvm-10.0.0-aarch64-linux-gnu//:clang++",
         ],
     }),
     visibility = ["//visibility:public"],
