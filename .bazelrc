@@ -9,10 +9,18 @@ test --runs_per_test=1
 build --cxxopt='-std=c++14'
 test --cxxopt='-std=c++14'
 
-# exp at centos, @sunxy
+# exp at centos
 # fix error: Undefined reference to `clock_gettime` although `-lrt` is given
 # https://stackoverflow.com/questions/17150075/undefined-reference-to-clock-gettime-although-lrt-is-given
-test --cxxopt='-Wl,--no-as-needed'
+build --linkopt='-lrt'
+build --linkopt='-Wl,--no-as-needed'
+test --linkopt='-lrt'
+test --linkopt='-Wl,--no-as-needed'
+
+# exp at centos
+# fix error: An error in llvm/Object/SymbolicFile.h : expected ')' before 'PRIxPTR'
+# https://stackoverflow.com/questions/14535556/why-doesnt-priu64-work-in-this-code/30851225#30851225
+test --cxxopt="-D__STDC_FORMAT_MACROS"
 
 # Promote unused variable warnings to errors.
 build --cxxopt='-Werror=unused-variable'

@@ -29,7 +29,7 @@
 
 cc_binary(
     name = "analyze",
-    srcs = ["analyze.cc"],
+    srcs = ["analyze.cc", "librt.so"],
     visibility = ["//visibility:public"],
     deps = [
         "//programl/graph/analysis",
@@ -44,7 +44,7 @@ cc_binary(
 
 cc_binary(
     name = "clang2graph",
-    srcs = ["clang2graph.cc"],
+    srcs = ["clang2graph.cc", "librt.so"],
     copts = [
         "-std=c++14",
         "-fno-rtti",
@@ -62,7 +62,7 @@ cc_binary(
 
 cc_binary(
     name = "graph2cdfg",
-    srcs = ["graph2cdfg.cc"],
+    srcs = ["graph2cdfg.cc", "librt.so"],
     visibility = ["//visibility:public"],
     deps = [
         "//programl/graph/format:cdfg",
@@ -75,7 +75,7 @@ cc_binary(
 
 cc_binary(
     name = "graph2dot",
-    srcs = ["graph2dot.cc"],
+    srcs = ["graph2dot.cc", "librt.so"],
     visibility = ["//visibility:public"],
     deps = [
         "//programl/graph/format:graphviz_converter",
@@ -87,7 +87,7 @@ cc_binary(
 
 cc_binary(
     name = "graph2json",
-    srcs = ["graph2json.cc"],
+    srcs = ["graph2json.cc", "librt.so"],
     visibility = ["//visibility:public"],
     deps = [
         "//programl/graph/format:node_link_graph",
@@ -111,7 +111,7 @@ py_binary(
 
 cc_binary(
     name = "graph2seq",
-    srcs = ["graph2seq.cc"],
+    srcs = ["graph2seq.cc", "librt.so"],
     visibility = ["//visibility:public"],
     deps = [
         "//programl/graph/format:graph_serializer",
@@ -137,7 +137,7 @@ py_binary(
 
 cc_binary(
     name = "llvm2graph",
-    srcs = ["llvm2graph.cc"],
+    srcs = ["llvm2graph.cc", "librt.so"],
     copts = ["-std=c++14"],
     visibility = ["//visibility:public"],
     deps = [
@@ -156,7 +156,7 @@ cc_binary(
 
 cc_binary(
     name = "pbq",
-    srcs = ["pbq.cc"],
+    srcs = ["pbq.cc", "librt.so"],
     visibility = ["//visibility:public"],
     deps = [
         "//programl/proto:checkpoint_cc",
@@ -174,7 +174,7 @@ cc_binary(
 
 cc_binary(
     name = "xla2graph",
-    srcs = ["xla2graph.cc"],
+    srcs = ["xla2graph.cc", "librt.so"],
     visibility = ["//visibility:public"],
     deps = [
         "//programl/ir/xla:hlo_module_graph_builder",
