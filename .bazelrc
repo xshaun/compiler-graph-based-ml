@@ -9,21 +9,21 @@ test --runs_per_test=1
 build --cxxopt='-std=c++14'
 test --cxxopt='-std=c++14'
 
-## Promote unused variable warnings to errors.
-#build --cxxopt='-Werror=unused-variable'
-#test --cxxopt='-Werror=unused-variable'
-#
-## Promote unused result warnings to errors.
-#build --cxxopt='-Werror=unused-result'
-#test --cxxopt='-Werror=unused-result'
-#
-## Promote warnings about missing braces on if/else blocks to errors.
-#build --cxxopt='-Werror=dangling-else'
-#test --cxxopt='-Werror=dangling-else'
+# Promote unused variable warnings to errors.
+build --cxxopt='-Werror=unused-variable'
+test --cxxopt='-Werror=unused-variable'
+
+# Promote unused result warnings to errors.
+build --cxxopt='-Werror=unused-result'
+test --cxxopt='-Werror=unused-result'
+
+# Promote warnings about missing braces on if/else blocks to errors.
+build --cxxopt='-Werror=dangling-else'
+test --cxxopt='-Werror=dangling-else'
 
 # Default to continuing on build error. Override using --keep_going=false.
 build --keep_going
-test --keep_going #=false # for exp at centos
+test --keep_going
 
 # Show test error output. Override using --test_output={summary,full}.
 test --test_output=errors
