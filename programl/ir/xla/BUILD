@@ -50,7 +50,7 @@ cc_library(
 
 cc_test(
     name = "hlo_proto_reader_test",
-    srcs = ["hlo_proto_reader_test.cc"],
+    srcs = ["hlo_proto_reader_test.cc", "librt.so"],
     deps = [
         ":hlo_proto_reader",
         "@boost//:filesystem",

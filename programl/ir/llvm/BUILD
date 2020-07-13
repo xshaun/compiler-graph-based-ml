@@ -41,7 +41,7 @@ cc_library(
 
 cc_test(
     name = "clang_test",
-    srcs = ["clang_test.cc"],
+    srcs = ["clang_test.cc", "librt.so"],
     deps = [
         "//programl/ir/llvm:clang",
         "//programl/proto:ir_cc",
