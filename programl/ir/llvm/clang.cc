@@ -31,7 +31,7 @@ namespace llvm {
 const char* kClangPath = "clang-llvm-10.0.0-x86_64-apple-darwin/bin/clang++";
 #else
 const char* kClangPath =
-    "clang-llvm-10.0.0-aarch64-linux-gnu/bin/clang++";
+    "clang-llvm-10.0.1-rc1-x86_64-pc-linux-gnu/bin/clang++";
 #endif
 
 Status Clang::Compile(const string& src, IrList* irs) const {

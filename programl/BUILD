@@ -42,7 +42,7 @@ sh_binary(
             "@clang-llvm-10.0.0-x86_64-apple-darwin//:libs",
         ],
         "//conditions:default": [
-            "@clang-llvm-10.0.0-aarch64-linux-gnu//:lib",
+            "@clang-llvm-10.0.1-rc1-x86_64-pc-linux-gnu//:lib",
         ],
     }),
 )

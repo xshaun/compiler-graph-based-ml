@@ -25,10 +25,10 @@ def programl_deps():
     
     # todo?
     # exp at centos
-    sha256="ce8220c8be3057bf21cb6c142f0c64c4206dd038dce1a661268bc668d460539d",
-    strip_prefix="compiler-bazel-llvm-0-alpha", 
-    urls=[ 
-      "https://github.com/xshaun/compiler-bazel-llvm/archive/v0-alpha.tar.gz"
+    sha256="c72a9088e0b1bf075b63754d8916284b6deff153b83f3209d3e84609a385213b",
+    strip_prefix="compiler-bazel-llvm-0.1-alpha", 
+    urls=[
+      "https://github.com/xshaun/compiler-bazel-llvm/archive/v0.1-alpha.tar.gz"
     ],
     
     # author's version supports ubuntu

@@ -33,7 +33,7 @@ bazel test //programl/...
 ### replace llvm**ubuntu with llvm version supporting CentOS
 
 ```bash
-sed -i s/clang-llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04/clang-llvm-10.0.0-aarch64-linux-gnu/g `grep -rl "clang-llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04" ./`
+sed -i s/clang-llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04/clang-llvm-10.0.1-rc1-x86_64-pc-linux-gnu/g `grep -rl "clang-llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04" ./`
 ```
 
 ### download dataset
