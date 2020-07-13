@@ -49,6 +49,7 @@ cc_binary(
         "-std=c++14",
         "-fno-rtti",
         "-DGOOGLE_PROTOBUF_NO_RTTI",
+        "-D__STDC_FORMAT_MACROS", # exp at centos. fix error: "llvm/Object/SymbolicFile.h : expected ')    ' before 'PRIxPTR'"
     ],
     visibility = ["//visibility:public"],
     deps = [
