@@ -72,7 +72,7 @@ sh_binary(
 
 cc_binary(
     name = "create_vocab",
-    srcs = ["create_vocab.cc"],
+    srcs = ["create_vocab.cc", "librt.so"],
     deps = [
         "//programl/proto:program_graph_cc",
         "@boost//:filesystem",
@@ -126,7 +126,7 @@ py_library(
 
 cc_binary(
     name = "unpack_ir_lists",
-    srcs = ["unpack_ir_lists.cc"],
+    srcs = ["unpack_ir_lists.cc", "librt.so"],
     deps = [
         ":parallel_file_map",
         "//programl/graph/format:cdfg",

@@ -33,7 +33,7 @@ cc_library(
 
 cc_test(
     name = "cdfg_test",
-    srcs = ["cdfg_test.cc"],
+    srcs = ["cdfg_test.cc", "librt.so"],
     deps = [
         ":cdfg",
         "//programl/graph:program_graph_builder",
@@ -56,7 +56,7 @@ cc_library(
 
 cc_test(
     name = "graph_serializer_test",
-    srcs = ["graph_serializer_test.cc"],
+    srcs = ["graph_serializer_test.cc", "librt.so"],
     deps = [
         ":graph_serializer",
         "//programl/proto:program_graph_cc",
@@ -77,7 +77,7 @@ cc_library(
 
 cc_test(
     name = "graph_tuple_test",
-    srcs = ["graph_tuple_test.cc"],
+    srcs = ["graph_tuple_test.cc", "librt.so"],
     deps = [
         ":graph_tuple",
         "//programl/proto:edge_cc",
@@ -119,7 +119,7 @@ cc_library(
 
 cc_test(
     name = "node_link_graph_test",
-    srcs = ["node_link_graph_test.cc"],
+    srcs = ["node_link_graph_test.cc", "librt.so"],
     deps = [
         ":node_link_graph",
         "//programl/proto:program_graph_cc",

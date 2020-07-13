@@ -62,7 +62,7 @@ cc_library(
 
 cc_test(
     name = "datadep_test",
-    srcs = ["datadep_test.cc"],
+    srcs = ["datadep_test.cc", "librt.so"],
     deps = [
         ":datadep",
         "//programl/graph:program_graph_builder",
@@ -94,7 +94,7 @@ cc_library(
 
 cc_test(
     name = "dominance_test",
-    srcs = ["dominance_test.cc"],
+    srcs = ["dominance_test.cc", "librt.so"],
     deps = [
         ":dominance",
         "//programl/graph:program_graph_builder",
@@ -124,7 +124,7 @@ cc_library(
 
 cc_test(
     name = "liveness_test",
-    srcs = ["liveness_test.cc"],
+    srcs = ["liveness_test.cc", "librt.so"],
     deps = [
         ":liveness",
         "//programl/graph:program_graph_builder",
@@ -152,7 +152,7 @@ cc_library(
 
 cc_test(
     name = "reachability_test",
-    srcs = ["reachability_test.cc"],
+    srcs = ["reachability_test.cc", "librt.so"],
     deps = [
         ":reachability",
         "//programl/graph:program_graph_builder",
@@ -183,7 +183,7 @@ cc_library(
 
 cc_test(
     name = "subexpressions_test",
-    srcs = ["subexpressions_test.cc"],
+    srcs = ["subexpressions_test.cc", "librt.so"],
     deps = [
         ":subexpressions",
         "//programl/graph:program_graph_builder",

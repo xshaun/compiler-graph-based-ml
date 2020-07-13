@@ -12,15 +12,21 @@ test --cxxopt='-std=c++14'
 # exp at centos
 # fix error: Undefined reference to `clock_gettime` although `-lrt` is given
 # https://stackoverflow.com/questions/17150075/undefined-reference-to-clock-gettime-although-lrt-is-given
-build --linkopt='-lrt'
-build --linkopt='-Wl,--no-as-needed'
-test --linkopt='-lrt'
-test --linkopt='-Wl,--no-as-needed'
+#build --linkopt='-lrt'
+#build --linkopt='-Wl,--no-as-needed'
+#test --linkopt='-lrt'
+#test --linkopt='-Wl,--no-as-needed'
+#build --cxxopt='-Wl,--no-as-needed'
+#test --cxxopt='-Wl,--no-as-needed'
+
+#test --copt='-lz'
+#test --cxxopt='-lz'
 
 # exp at centos
 # fix error: An error in llvm/Object/SymbolicFile.h : expected ')' before 'PRIxPTR'
 # https://stackoverflow.com/questions/14535556/why-doesnt-priu64-work-in-this-code/30851225#30851225
-test --cxxopt="-D__STDC_FORMAT_MACROS"
+#test --cxxopt="-D__STDC_FORMAT_MACROS"
+#test --copt="-D__STDC_FORMAT_MACROS"
 
 # Promote unused variable warnings to errors.
 build --cxxopt='-Werror=unused-variable'
@@ -36,7 +42,7 @@ test --cxxopt='-Werror=dangling-else'
 
 # Default to continuing on build error. Override using --keep_going=false.
 build --keep_going
-test --keep_going=false # for exp at centos
+test --keep_going #=false # for exp at centos
 
 # Show test error output. Override using --test_output={summary,full}.
 test --test_output=errors
