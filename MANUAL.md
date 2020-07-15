@@ -72,12 +72,21 @@ conda install -y -c conda-forge clang==10.0.0 clang-tools==10.0.0 clang_osx-64==
 ### download dataset
 
 ```bash
-wget https://www.dropbox.com/s/cw25t4cls6otel5/llvm_ir_20.06.01.tar.bz2 && tar jxvf llvm_ir_20.06.01.tar.bz2
-wget https://www.dropbox.com/s/f7j2qbo6hobckqy/graphs_20.06.01.tar.bz2 && tar jxvf graphs_20.06.01.tar.bz2
-wget https://www.dropbox.com/s/ha0lp343an336fp/labels_reachability_20.06.01.tar.bz2 && tar jxvf labels_reachability_20.06.01.tar.bz2
-wget https://www.dropbox.com/s/cl4kuak4kds9yuc/labels_domtree_20.06.01.tar.bz2 && tar jxvf labels_domtree_20.06.01.tar.bz2
-wget https://www.dropbox.com/s/yxqzmp4vvzycxje/labels_datadep_20.06.01.tar.bz2 && tar jxvf labels_datadep_20.06.01.tar.bz2
-wget https://www.dropbox.com/s/qvhekvovx6n1ino/labels_liveness_20.06.01.tar.bz2 && tar jxvf labels_liveness_20.06.01.tar.bz2
-wget https://www.dropbox.com/s/a8tkugnu6mq64kq/labels_subexpressions_20.06.01.tar.bz2 && tar jxvf labels_subexpressions_20.06.01.tar.bz2
-wget https://www.dropbox.com/s/o3qopbyhf2p5pf2/dataflow_logs_20.06.01.tar.bz2 && tar jxvf dataflow_logs_20.06.01.tar.bz2
+wget https://www.dropbox.com/s/cw25t4cls6otel5/llvm_ir_20.06.01.tar.bz2
+wget https://www.dropbox.com/s/f7j2qbo6hobckqy/graphs_20.06.01.tar.bz2
+wget https://www.dropbox.com/s/ha0lp343an336fp/labels_reachability_20.06.01.tar.bz2 
+wget https://www.dropbox.com/s/cl4kuak4kds9yuc/labels_domtree_20.06.01.tar.bz2 
+wget https://www.dropbox.com/s/yxqzmp4vvzycxje/labels_datadep_20.06.01.tar.bz2 
+wget https://www.dropbox.com/s/qvhekvovx6n1ino/labels_liveness_20.06.01.tar.bz2 
+wget https://www.dropbox.com/s/a8tkugnu6mq64kq/labels_subexpressions_20.06.01.tar.bz2
+wget https://www.dropbox.com/s/o3qopbyhf2p5pf2/dataflow_logs_20.06.01.tar.bz2 
+
+tar jxvf llvm_ir_20.06.01.tar.bz2
+tar jxvf graphs_20.06.01.tar.bz2
+tar jxvf labels_reachability_20.06.01.tar.bz2
+tar jxvf labels_domtree_20.06.01.tar.bz2
+tar jxvf labels_datadep_20.06.01.tar.bz2
+tar jxvf labels_liveness_20.06.01.tar.bz2
+tar jxvf labels_subexpressions_20.06.01.tar.bz2
+tar jxvf dataflow_logs_20.06.01.tar.bz2
 ```
