@@ -5,7 +5,7 @@
 test -f /usr/local/bin/brew || yes | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-## step 2.
+## step 2. Library dependency
 ```
 brew install bazel
 brew install coreutils
@@ -32,7 +32,7 @@ brew install ffmpeg
 curl -L -o /tmp/bazel.sh https://github.com/bazelbuild/bazel/releases/download/2.0.0/bazel-2.0.0-installer-linux-x86_64.sh && sudo bash /tmp/bazel.sh && rm /tmp/bazel.sh
 ```
 
-## step 2. Ubuntu only
+## step 2. Library dependency (ubuntu only)
 ```
 sudo apt-get update  # Update package index:
 sudo apt install -y --no-install-recommends ca-certificates
@@ -81,14 +81,19 @@ in one line:
 ```bash
 sudo apt-get update && sudo apt install -y --no-install-recommends ca-certificates curl wget g++ git ocl-icd-opencl-dev opencl-c-headers  pkg-config python3.6 python3.6-dev python3-pip python3-distutils unzip zip zlib1g-dev openjdk-11-jdk m4 libexempi-dev rsync python3-numpy build-essential libsdl2-dev libjpeg-dev nasm tar libbz2-dev libgtk2.0-dev cmake libfluidsynth-dev libgme-dev libopenal-dev timidity libwildmidi-dev libboost-all-dev libsdl2-dev patch libmysqlclient-dev libtinfo-dev
 ```
+## step 2. Library dependency (centos only)
 
-## step 3. python packages manually installed
 ```
-python -m pip install 'pybind11==2.4.3' # Required for building pyopencl:
-python3 -m pip install 'setuptools==49.2.0' # Required for installing tensorflow
-python3 -m pip install 'tensorflow==1.14.0'
+#
+```
+
+## step 3. Python packages required to install manually
+```
+python3 -m pip install 'pybind11==2.4.3' --user # Required for building pyopencl:
+python3 -m pip install 'setuptools==49.2.0' --user # Required for installing tensorflow
+python3 -m pip install 'tensorflow==1.14.0' --user
 ```
 in one line
 ```bash
-python3 -m pip install 'pybind11==2.4.3'  'setuptools==49.2.0' && python3 -m pip install 'tensorflow==1.14.0'
+python3 -m pip install 'pybind11==2.4.3'  'setuptools==49.2.0' --user && python3 -m pip install 'tensorflow==1.14.0' --user
 ```
