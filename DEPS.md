@@ -89,11 +89,12 @@ sudo apt-get update && sudo apt install -y --no-install-recommends ca-certificat
 
 ## step 3. Python packages required to install manually
 ```
+python3 -m pip install wheel --user
 python3 -m pip install 'pybind11==2.4.3' --user # Required for building pyopencl:
 python3 -m pip install 'setuptools==49.2.0' --user # Required for installing tensorflow
 python3 -m pip install 'tensorflow==1.14.0' --user
 ```
 in one line
 ```bash
-python3 -m pip install 'pybind11==2.4.3'  'setuptools==49.2.0' --user && python3 -m pip install 'tensorflow==1.14.0' --user
+python3 -m pip install wheel --user && python3 -m pip install 'pybind11==2.4.3'  'setuptools==49.2.0' --user && python3 -m pip install 'tensorflow==1.14.0' --user
 ```
