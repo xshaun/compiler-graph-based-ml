@@ -27,28 +27,24 @@ brew install ffmpeg
 
 # Linux env
 
-## step 1. Install bazel:
-```
-curl -L -o /tmp/bazel.sh https://github.com/bazelbuild/bazel/releases/download/2.0.0/bazel-2.0.0-installer-linux-x86_64.sh && sudo bash /tmp/bazel.sh && rm /tmp/bazel.sh
-```
 
-## step 2. Library dependency (ubuntu only)
+## step 1. Library dependency (ubuntu only)
 ```
 sudo apt-get update  # Update package index:
 sudo apt install -y --no-install-recommends ca-certificates
-sudo apt install -y --no-install-recommends curl
+sudo apt install -y --no-install-recommends curl       # Needed for bazel
 sudo apt install -y --no-install-recommends wget
 sudo apt install -y --no-install-recommends g++
 sudo apt install -y --no-install-recommends git
 sudo apt install -y --no-install-recommends ocl-icd-opencl-dev  # Needed for -lOpenCL
-sudo apt install -y --no-install-recommends opencl-c-headers  # Needed for #include <CL/cl.h>
+sudo apt install -y --no-install-recommends opencl-c-headers    # Needed for #include <CL/cl.h>
 sudo apt install -y --no-install-recommends pkg-config
 sudo apt install -y --no-install-recommends python
 sudo apt install -y --no-install-recommends python-dev  # Python headers needed for pybind
 sudo apt install -y --no-install-recommends python3.6
 sudo apt install -y --no-install-recommends python3.6-dev
 sudo apt install -y --no-install-recommends python3-distutils
-sudo apt install -y --no-install-recommends unzip
+sudo apt install -y --no-install-recommends unzip       # Needed for bazel
 sudo apt install -y --no-install-recommends zip
 sudo apt install -y --no-install-recommends zlib1g-dev
 sudo apt install -y --no-install-recommends openjdk-11-jdk
@@ -81,11 +77,17 @@ in one line:
 ```bash
 sudo apt-get update && sudo apt install -y --no-install-recommends ca-certificates curl wget g++ git ocl-icd-opencl-dev opencl-c-headers  pkg-config python3.6 python3.6-dev python3-pip python3-distutils unzip zip zlib1g-dev openjdk-11-jdk m4 libexempi-dev rsync python3-numpy build-essential libsdl2-dev libjpeg-dev nasm tar libbz2-dev libgtk2.0-dev cmake libfluidsynth-dev libgme-dev libopenal-dev timidity libwildmidi-dev libboost-all-dev libsdl2-dev patch libmysqlclient-dev libtinfo-dev
 ```
-## step 2. Library dependency (centos only)
+## step 1. Library dependency (centos only)
 
 ```
 #
 ```
+
+## step 2. Install bazel:
+```
+curl -L -o /tmp/bazel.sh https://github.com/bazelbuild/bazel/releases/download/2.0.0/bazel-2.0.0-installer-linux-x86_64.sh && sudo bash /tmp/bazel.sh && rm /tmp/bazel.sh
+```
+
 
 ## step 3. Python packages required to install manually
 ```
@@ -98,3 +100,21 @@ in one line
 ```bash
 python3 -m pip install wheel --user && python3 -m pip install 'pybind11==2.4.3'  'setuptools==49.2.0' --user && python3 -m pip install 'tensorflow==1.14.0' --user
 ```
+
+# Singularity
+
+```
+BootStrap: docker
+From: ubuntu:18.04
+
+%post
+  echo "Hello from inside the container"
+  apt-get update
+  apt-get install -y --no-install-recommends curl unzip ca-certificates wget g++ git ocl-icd-opencl-dev opencl-c-headers  pkg-config python3.6 python3.6-dev python3-pip python3-distutils unzip zip zlib1g-dev openjdk-11-jdk m4 libexempi-dev rsync python3-numpy build-essential libsdl2-dev libjpeg-dev nasm tar libbz2-dev libgtk2.0-dev cmake libfluidsynth-dev libgme-dev libopenal-dev timidity libwildmidi-dev libboost-all-dev libsdl2-dev patch libmysqlclient-dev libtinfo-dev
+  curl -L -o /tmp/bazel.sh https://github.com/bazelbuild/bazel/releases/download/2.0.0/bazel-2.0.0-installer-linux-x86_64.sh && bash /tmp/bazel.sh && rm /tmp/bazel.sh
+  apt-get clean
+  python3 -m pip install wheel && python3 -m pip install 'pybind11==2.4.3' 'setuptools==49.2.0' && python3 -m pip install 'tensorflow==1.14.0'
+
+```
+
+
