@@ -70,12 +70,12 @@ sudo apt install -y --no-install-recommends libsdl2-dev
 sudo apt install -y --no-install-recommends patch # Required by bazel workspace rules:
 sudo apt-get install -y --no-install-recommends libmysqlclient-dev 
 sudo apt-get install -y --no-install-recommends libtinfo-dev 
-sudo apt-get install -y --no-install-recommends python3-tk 
+sudo apt-get install -y --no-install-recommends python3-tk  # Required by llvm2graph and dataflow_lstm benchmarks
 ```
 in one line: 
 
 ```bash
-sudo apt-get update && sudo apt install -y --no-install-recommends ca-certificates curl wget g++ git ocl-icd-opencl-dev opencl-c-headers  pkg-config python3.6 python3.6-dev python3-pip python3-distutils unzip zip zlib1g-dev openjdk-11-jdk m4 libexempi-dev rsync python3-numpy build-essential libsdl2-dev libjpeg-dev nasm tar libbz2-dev libgtk2.0-dev cmake libfluidsynth-dev libgme-dev libopenal-dev timidity libwildmidi-dev libboost-all-dev libsdl2-dev patch libmysqlclient-dev libtinfo-dev
+sudo apt-get update && sudo apt install -y --no-install-recommends ca-certificates curl wget g++ git ocl-icd-opencl-dev opencl-c-headers  pkg-config python3.6 python3.6-dev python3-pip python3-distutils python3-tk unzip zip zlib1g-dev openjdk-11-jdk m4 libexempi-dev rsync python3-numpy build-essential libsdl2-dev libjpeg-dev nasm tar libbz2-dev libgtk2.0-dev cmake libfluidsynth-dev libgme-dev libopenal-dev timidity libwildmidi-dev libboost-all-dev libsdl2-dev patch libmysqlclient-dev libtinfo-dev 
 ```
 ## step 1. Library dependency (centos only)
 
@@ -110,7 +110,7 @@ From: ubuntu:18.04
 %post
   echo "Hello from inside the container"
   apt-get update
-  apt-get install -y --no-install-recommends curl unzip ca-certificates wget g++ git ocl-icd-opencl-dev opencl-c-headers  pkg-config python3.6 python3.6-dev python3-pip python3-distutils unzip zip zlib1g-dev openjdk-11-jdk m4 libexempi-dev rsync python3-numpy build-essential libsdl2-dev libjpeg-dev nasm tar libbz2-dev libgtk2.0-dev cmake libfluidsynth-dev libgme-dev libopenal-dev timidity libwildmidi-dev libboost-all-dev libsdl2-dev patch libmysqlclient-dev libtinfo-dev
+  apt-get install -y --no-install-recommends curl unzip ca-certificates wget g++ git ocl-icd-opencl-dev opencl-c-headers  pkg-config python3.6 python3.6-dev python3-pip python3-distutils python3-tk unzip zip zlib1g-dev openjdk-11-jdk m4 libexempi-dev rsync python3-numpy build-essential libsdl2-dev libjpeg-dev nasm tar libbz2-dev libgtk2.0-dev cmake libfluidsynth-dev libgme-dev libopenal-dev timidity libwildmidi-dev libboost-all-dev libsdl2-dev patch libmysqlclient-dev libtinfo-dev
   curl -L -o /tmp/bazel.sh https://github.com/bazelbuild/bazel/releases/download/2.0.0/bazel-2.0.0-installer-linux-x86_64.sh && bash /tmp/bazel.sh && rm /tmp/bazel.sh
   apt-get clean
   python3 -m pip install wheel && python3 -m pip install 'pybind11==2.4.3' 'setuptools==49.2.0' && python3 -m pip install 'tensorflow==1.14.0'
