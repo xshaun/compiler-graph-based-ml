@@ -1,4 +1,47 @@
-# Compile and Build
+# CentOS only
+
+```
+sudo yum install -y epel-release
+sudo yum install -y ca-certificates
+sudo yum install -y curl
+sudo yum install -y wget
+sudo yum install -y g++
+sudo yum install -y gcc-c++                        # Needed for building grpcio
+sudo yum install -y git
+sudo yum install -y python
+sudo yum install -y python-devel                # Python headers needed for pybind
+sudo yum install -y python3.6
+sudo yum install -y python3.6-devel
+sudo yum install -y unzip
+sudo yum install -y zip
+sudo yum install -y bzip2
+sudo yum install -y m4
+sudo yum install -y python3-numpy
+sudo yum install -y rsync
+sudo yum install -y tar
+sudo yum install -y nasm
+sudo yum install -y patch                              # Required by bazel workspace rules:
+sudo yum install -y cmake
+sudo yum install -y python3-tkinter              # python3-tk
+sudo yum install -y java-11-openjdk             # openjdk-11-jdk
+sudo yum install -y python36-distutils-extra # python3-distutils
+sudo yum install -y mariadb-devel                # libmysqlclient-dev 
+sudo yum install -y boost-devel                    # libboost-all-dev 
+sudo yum install -y libtimidity-devel             # timidity
+sudo yum install -y exempi-devel                  # libexempi-dev
+sudo yum install -y SDL2-devel                     # libsdl2-dev
+sudo yum install -y fluidsynth-devel              # libfluidsynth-dev
+sudo yum install -y openal-devel                  # libopenal-dev
+sudo yum install -y wildmidi-devel                # libwildmidi-dev
+sudo yum install -y ocl-icd                             # ocl-icd-opencl-dev  # Needed for -lOpenCL
+sudo yum install -y opencl-headers               # opencl-c-headers  # Needed for #include <CL/cl.h>
+sudo yum install -y gpgme-devel                  # libgme-dev
+sudo yum install -y gtk2-devel                       # libgtk2.0-dev
+sudo yum install -y python36-pkgconfig       # pkg-config
+yum install ncurses-devel.i686                       # libtinfo-dev
+```
+
+# CONDA Compile and Build
 
 ```bash
 # module: anaconda/2019.10; anaconda1.7.2; conda4.7.12
@@ -37,7 +80,81 @@ conda update -y --all
 bazel test //programl/...
 ```
 
-# QA
+# QA & Debug
+
+### How to manually upgrade gcc to a higher version supporting c++14
+```
+wget https://ftp.gnu.org/gnu/gcc/gcc-10.1.0/gcc-10.1.0.tar.gz
+tar zxvf ./gcc-10.1.0.tar.gz
+
+cd gcc-10.1.0
+./contrib/download_prerequisites  
+cd ..
+mkdir gcc-10.1.0-build
+cd gcc-10.1.0-build
+../gcc-10.1.0/configure --enable-languages=c,c++ --disable-multilib --prefix=/nobackup/scxs/gcc
+make
+sudo make install
+
+export PATH=/usr/local/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH
+```
+
+### How to erase the old version of softwares, like gcc
+```
+rpm  -q gcc # search all versions of gcc installed at the current machine
+rpm  -e <gcc_version> # erase old version of gcc. like gcc-4.8.5-39.el7.x86_64
+```
+
+### How to customize virutal machine to build a 'free' environment.
+```
+# download official cloud images, 
+# like from https://cloud.centos.org/centos/7/images/
+wget https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-Azure-1907.qcow2
+
+# install virt-customize 
+sudo apt install libguestfs-tools
+
+# change the default password into 123456 for root
+virt-customize -a CentOS-7-x86_64-Azure-1907.qcow2 --root-password password:123456
+#
+# [   0.0] Examining the guest ...
+# [  26.9] Setting a random seed
+# [  26.9] Setting passwords
+# [  28.5] Finishing off
+
+# search extra disk(s) that can be mount 
+lsblk -f
+
+# the following instructions for saving time
+# sudo mount <source> <desdir>
+# sudo chmod -R a+rw  <des dir>
+ if [ ! -d /dev/vda2 ]; then
+     sudo mkdir /dev/vda2
+     sudo mount /dev/sda /dev/vda2
+     sudo chmod -R a+rw  /dev/vda2
+ fi
+```
+
+### Error: `/usr/bin/ld.gold: error: cannot find -ltinfo`
+
+In CentOS environment, you have to install the 32-bit ncurses package, even at 64-bit OS. `yum install ncurses-devel.i686`
+
+
+### Error: libstdc++.so.6, version `GLIBCXX*`, `CXXABI*` not found...
+
+ The library is part of gcc compiler. If you have multiple versions of gcc, you have to make sure the library (its softlink) is compitable or corresponding with the gcc used to compile currently.
+make new softlink or move ahead the include folder.
+
+### Error: pip ** No Space
+use `-d` and `-b` parameters to redirect download and build folders, like `pip3 install -r requirements.txt -b /storage/tmp/ -d /storage/tmp/`
+
+### Error: PermissionError: [Errno 13] Permission denied: '/usr/local/lib64/python3.6'
+use `--user` parameters. 
+
+### Error: undefined reference to `llvm::***`, `std::__cxx11::`, `std::__1::__sort`, `std::__1::__less`, 
+llvm was not compiled with c++11.
+
 
 ### replace llvm**ubuntu with llvm version supporting CentOS
 ```bash
@@ -63,11 +180,6 @@ cd build
 make
 make install
 ```
-### libz3.so not found
-
-#>. fix dependency. clang+llvm 10.0.0 (sb, is using centos and restricting software installation)
-conda install -y -c conda-forge clang==10.0.0 clang-tools==10.0.0 clang_osx-64==10.0.0  clangdev==10.0.0 clangxx_osx-64==10.0.0 libclang==10.0.0 python-clang==10.0.0 llvm==10.0.0 libllvm10==10.0.0 llvm-tools==10.0.0 llvmdev==10.0.0 libunwind==1.3.1 lld=10.0.0 libcblas==3.8.0  doxygen==1.8.18
-
 
 ### download dataset
 
